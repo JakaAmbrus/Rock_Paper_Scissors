@@ -16,8 +16,8 @@
             <div id="title-overlay">
                 <h1>Rock Paper Scissors</h1>
             </div>
-            <div class="btn">
-                    <button><b>Start Game</b></button>  
+            <div class="start-btn-container">
+                    <button class="start-btn"><b>Start Game</b></button>  
             </div>
             <div id="technologies-used">
                 <div class="icons">
@@ -27,7 +27,29 @@
             </div>
             </div>
         </div>
-        <div id="game_container"></div>
+        <!-- end of the start menu -->
+        <div id="game-container">
+            <div id="title"> Rock Paper Scissors</div>
+            <div id="game-content">
+                <div id="choose-weapon-text">Choose your weapon wisely</div>
+                <div id="choices">
+                    <div id="r-container">
+                        <button id="rock" class="buttons"><img src="img/rock.png" alt="rock_png" class="r-png pngs"></button>
+                    </div>
+                    <div id="p-container">
+                        <button id="paper" class="buttons"><img src="img/paper.png" alt="paper_png" class="p-png pngs"></button>
+                    </div>
+                    <div id="s-container">
+                        <button id="scissors" class="buttons"><img src="img/scissors.png" alt="scissors_png" class="s-png pngs"></button>
+                    </div>
+                </div>
+                <div id="scores">
+                    <div id="player-score">0</div>
+                    <div id="score-seperator">-</div>
+                    <div id="computer-score">0</div>
+                </div>
+            </div>
+        </div>
     </div>
     
 

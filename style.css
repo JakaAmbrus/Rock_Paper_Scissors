@@ -1,17 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+:root{
+  --primary-font-color: #B3D3FC;
+  --secondary-font: #f1f4f8;
+}
 body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    color: #f1f4f8;
     
   }
+  /* border maker */
+  /* #scores, #choose-weapon-text, #choices{
+  border:3px solid white;
+} */
+  /* border maker */
 #full-container {
     position: relative;
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100vh;
-    background-color: gray;
+    background-image: url('img/jeremy-perkins-uhjiu8FjnsQ-unsplash.jpg');
     
   
 }
@@ -22,12 +32,12 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-image: url('img/wallpaperflare.com_wallpaper2.jpg');
-    opacity: 0.8;
+    opacity: 1;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     gap: 12px;
     overflow: hidden;
+    transition: opacity 0.4s ease;
 } 
 #title-overlay {
   display: flex;
@@ -37,24 +47,28 @@ body {
 #title-overlay h1{
   font-size: 11vw; 
   line-height: 30vh;
-  color: white;
+  color: var(--primary-font-color);
+  text-shadow: 0 0 2vh white;
   
 }
 
-.btn{
+.start-btn-container{
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
-.btn button{
+.start-btn-container button{
   height: 11vh;
   width: minmax(400px, 40vw);
   border-radius: 30px;
   background: none;
-  border: 5px solid white;
+  border: 5px solid var(--primary-font-color);
+  outline: white;
   font-size: 4vw;
-  color: white;
+  color: var(--primary-font-color);
+  cursor: pointer;
+  text-shadow: 0 0 1vh white
 }
 #technologies-used{
   display: flex;
@@ -65,10 +79,57 @@ body {
 margin: 2vh;
 }
 .icons i{
-  color: rgba(255, 255, 255, 0.63);
   font-size: 6vh;
   margin: 0 1vh;
   
 }
 
 /* the start screen end */
+#game-container {
+  opacity: 0;
+  display: none;
+  width: 100%;
+  height: 100vh;
+  grid-template-rows: 2fr 5fr;
+}
+#title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7vw;
+}
+#game-content{
+  display: grid;
+  grid-template-rows: 0.5fr 3fr 1.5fr;
+}
+#choose-weapon-text{
+  display: flex;
+  justify-content: center;
+  font-size: 5vh;
+}
+.pngs{
+  height: 25vh;
+  width: 25vh;
+  background: none;
+}
+.buttons{
+  background:none;
+  border: none;
+  cursor: pointer;
+}
+
+#choices{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+#scores{
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
+  
+}
+#player-score, #score-seperator, #computer-score{
+font-size: 8vh;
+}
