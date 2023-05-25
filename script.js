@@ -9,7 +9,7 @@ const titleP = document.querySelector('.title-p');
 const titleS = document.querySelector('.title-s');
 const choices = document.querySelector('#choices-container');
 const scoresContainer = document.querySelector('#scores');
-console.log('3')
+console.log('3')sdgdsd
 //transition to the game from start game screen
 startBtn.addEventListener('click', hideOverlayAndGameStart);
 function hideOverlayAndGameStart()
