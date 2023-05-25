@@ -11,6 +11,7 @@
 </head>
 <body>
     <div id="full-container">
+        <button id="fullscreen-button" class="buttons"><img src="img/fullscreen.png" alt="fullscreen_png" class="fullscreen-png"></button>
         <!--This is the start menu for the game -->
         <div id="overlay">
             <div id="title-overlay">
@@ -29,10 +30,15 @@
         </div>
         <!-- end of the start menu -->
         <div id="game-container">
-            <div id="title"> Rock Paper Scissors</div>
+            <div id="title"> 
+                <div class="title-r">Rock</div>
+                <div class="title-p">Paper</div>
+                <div class="title-s">Scissors</div>
+            </div>
             <div id="game-content">
-                <div id="choose-weapon-text">Choose your weapon wisely</div>
+                <div id="text-below-title">Choose your weapon wisely</div>
                 <div id="choices">
+                    <div id="choices-container">
                     <div id="r-container">
                         <button id="rock" class="buttons"><img src="img/rock.png" alt="rock_png" class="r-png pngs"></button>
                     </div>
@@ -42,6 +48,7 @@
                     <div id="s-container">
                         <button id="scissors" class="buttons"><img src="img/scissors.png" alt="scissors_png" class="s-png pngs"></button>
                     </div>
+                </div>
                 </div>
                 <div id="scores">
                     <div id="player-score">0</div>

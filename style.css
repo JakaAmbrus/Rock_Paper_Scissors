@@ -16,14 +16,25 @@ body {
 } */
   /* border maker */
 #full-container {
-    position: relative;
+    /* transform: scale(0.6); */
+    box-sizing: border-box;
+    position: absolute;
+    border: 10px solid var(--secondary-font);
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100vh;
     background-image: url('img/jeremy-perkins-uhjiu8FjnsQ-unsplash.jpg');
     
-  
+}
+#fullscreen-button{
+  position: absolute;
+  bottom: 2vh;
+  right: 2vw;
+}
+.fullscreen-png{
+  height: 5vh;
+  width: 5vh;
 }
 /* the start game screen start */
  #overlay {
@@ -37,7 +48,7 @@ body {
     grid-template-rows: 1fr 1fr 1fr;
     gap: 12px;
     overflow: hidden;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.6s ease;
 } 
 #title-overlay {
   display: flex;
@@ -47,8 +58,8 @@ body {
 #title-overlay h1{
   font-size: 11vw; 
   line-height: 30vh;
-  color: var(--primary-font-color);
-  text-shadow: 0 0 2vh white;
+  color: var(--secondary-font);
+  /* text-shadow: 0 0 0.5vh white; */
   
 }
 
@@ -63,12 +74,12 @@ body {
   width: minmax(400px, 40vw);
   border-radius: 30px;
   background: none;
-  border: 5px solid var(--primary-font-color);
+  border: 5px solid var(--secondary-font);
   outline: white;
   font-size: 4vw;
-  color: var(--primary-font-color);
+  color: var(--secondary-font);
   cursor: pointer;
-  text-shadow: 0 0 1vh white
+  /* text-shadow: 0 0 0.5vh white */
 }
 #technologies-used{
   display: flex;
@@ -76,11 +87,13 @@ body {
   align-items: end;
 }
 .icons{
-margin: 2vh;
+margin-bottom: 3vh;
+
 }
 .icons i{
-  font-size: 6vh;
-  margin: 0 1vh;
+  font-size: 4vw;
+  margin: 0 .5vh;
+  color: #d3d3d3;
   
 }
 
@@ -97,20 +110,35 @@ margin: 2vh;
   justify-content: center;
   align-items: center;
   font-size: 7vw;
+  gap: 2vw;
+  color: var(--secondary-font);
+}
+.title-r, .title-p, .title-s{
+  opacity: 0;
+  transition: opacity 2s ease;
+
 }
 #game-content{
   display: grid;
   grid-template-rows: 0.5fr 3fr 1.5fr;
 }
-#choose-weapon-text{
+#text-below-title{
   display: flex;
   justify-content: center;
-  font-size: 5vh;
+  font-size: 4vw;
+  opacity: 0;
+  transition: opacity 2s ease;
+
 }
 .pngs{
-  height: 25vh;
-  width: 25vh;
+  height: 15vw;
+  width: 15vw;
   background: none;
+  transition: transform 0.5s ease;
+  
+}
+.pngs:hover{
+  transform: scale(1.1, 1.2);
 }
 .buttons{
   background:none;
@@ -122,14 +150,28 @@ margin: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10%;
+  gap: 10vw;
+  
+}
+#choices-container{
+  display: flex;
+  gap: 10vw;
+  opacity: 0;
+  transition: opacity 2s ease;
 }
 #scores{
   display: flex;
   justify-content: center;
   gap: 3vw;
+  opacity: 0;
+  transition: opacity 2s ease;
   
 }
 #player-score, #score-seperator, #computer-score{
 font-size: 8vh;
 }
+/* @media (max-width: 1000px) {
+  #full-container {
+    transform: scale(1, 0.6);
+}
+} */
