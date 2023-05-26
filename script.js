@@ -139,7 +139,7 @@ function win(){
         playerScoreSpan.innerHTML = playerScore;
         computerScoreSpan.innerHTML = computerScore;
         console.log('win')
-                winnerF();
+               
             setTimeout(() => {
                 if(playerScore == 5){
                     disablePointers();
