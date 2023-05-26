@@ -1,4 +1,5 @@
 //for the game to start
+const fullContainer = document.querySelector('#full-container');
 const startBtn = document.querySelector('.start-btn');
 const overlay = document.querySelector('#overlay');
 const gameContainer = document.querySelector('#game-container');
@@ -20,6 +21,7 @@ function hideOverlayAndGameStart()
     setTimeout(() => {
         overlay.style.display = "none";
         gameContainer.style.display = 'grid';
+        disablePointers();
         setTimeout(() => {
             titleR.style.opacity = '1';
             setTimeout(() => {
@@ -31,7 +33,7 @@ function hideOverlayAndGameStart()
                         setTimeout(() => {
                             scoresContainer.style.opacity = '1';
                             choices.style.opacity = '1';
-                            
+                            enablePointers();
                         }, 1200)    
                     }, 1000)
                 }, 700)
@@ -76,10 +78,10 @@ let  ComputerSelection;
 }
 function playRound(x, y){
     if (x == "rock" && y == "paper"){
-        return winRP();
+        return loseRP();
     }
     else if (x == "rock" && y == "scissors"){
-        return loseRS();
+        return winRS();
     }
     else if (x == "paper" && y == "scissors"){
         return losePS();
@@ -102,27 +104,70 @@ function playRound(x, y){
     else if (x == "scissors" && y == "scissors"){
         return tieS();
     }
-
+  
 }
+
+const animationsContainer = document.querySelector('#animations-container')
+let imageLeft = document.getElementById("left-png");
+let imageRight = document.getElementById("right-png");
+
+function animation(left, right){
+
+setTimeout(() => {
+imageLeft.src = left;
+imageRight.src = right;
+animationsContainer.style.display = 'grid';
+gameContainer.style.display = 'none';
+setTimeout(() => {
+    imageLeft.style.marginLeft = '11vw'
+imageRight.style.marginRight = '11vw'
+}, 50)
+disablePointers();
+setTimeout(() => {
+    enablePointers();
+    animationsContainer.style.display = 'none';
+    gameContainer.style.display = 'grid';
+    imageLeft.style.marginLeft = '4vw'
+    imageRight.style.marginRight = '4vw'
+}, 1900)
+}, 100)
+}
+
 function win(){
-    playerScore++;
-    playerScoreSpan.innerHTML = playerScore;
-    computerScoreSpan.innerHTML = computerScore;
-    console.log('win')
-    if(playerScore == 5){
-        gameReset();
+    setTimeout(() => {
+        playerScore++;
+        playerScoreSpan.innerHTML = playerScore;
+        computerScoreSpan.innerHTML = computerScore;
+        console.log('win')
+                winnerF();
+            setTimeout(() => {
+                if(playerScore == 5){
+                    disablePointers();
+                    gameReset();
+                        winnerF();
+                }
+            }, 10); 
         
-    }
+        
+    }, 2000)
 
 }
 function lose(){
-    computerScore++;
-    playerScoreSpan.innerHTML = playerScore;
-    computerScoreSpan.innerHTML = computerScore;
-    console.log('lose')
-    if(computerScore == 5){
-        gameReset();
-    }
+    setTimeout(() => {
+        computerScore++;
+        playerScoreSpan.innerHTML = playerScore;
+        computerScoreSpan.innerHTML = computerScore;
+        console.log('lose')
+        setTimeout(() => {
+            if(computerScore == 5){
+                disablePointers();
+                gameReset();
+                    loserF();
+            }
+        }, 10); 
+        
+    }, 2000)
+   
 }
 function tie(){
     console.log('tie')
@@ -133,24 +178,99 @@ function gameReset(){
     playerScoreSpan.innerHTML = playerScore;
     computerScoreSpan.innerHTML = computerScore;
 }
-function winRP(){
-    win();
+const R = "img/rock.png";
+const R2 = "img/rock-right.png";
+const P = "img/paper.png";
+const P2 = "img/paper-right.png";
+const S = "img/scissors.png";
+const S2 = "img/scissors-right.png";
+
+function loseRP(){
+    lose();
+    animation(R, P2);
 }
 function winPR(){
     win();
+    animation(P, R2);
 }
 function winSP(){
     win();
+    animation(S, P2);
 }
 
 function losePS(){
     lose();
+    animation(P, S2);
 }
-function loseRS(){
-    lose();
+function winRS(){
+    win();
+    animation(R, S2);
 }
 function loseSR(){
     lose();
+    animation(S, R2);
+}
+function tieR(){
+    animation(R, R2);
+}
+function tieP(){
+    animation(P, P2);
+}
+function tieS(){
+    animation(S, S2);
+}
+
+
+
+const winner = document.querySelector('#winner-screen');
+const loser = document.querySelector('#loser-screen');
+const allBtn = document.querySelector('.buttons');
+const youWin = document.querySelector('#you-win');
+const youLose = document.querySelector('#you-lose');
+const doAgain = document.querySelector('#now-do-it-again');
+const tryAgain = document.querySelector('#better-luck-next-time');
+
+function winnerF(){
+winner.style.display = 'flex';
+gameContainer.style.display = 'none';
+setTimeout(() => {
+    youWin.style.opacity = '1';
+}, 1000);
+setTimeout(() => {
+    doAgain.style.opacity = '1';
+}, 2000);
+setTimeout(() => {
+    winner.style.display = 'none';
+    enablePointers()
+    gameContainer.style.display = 'grid';
+    youWin.style.opacity = '0';
+    doAgain.style.opacity = '0';
+}, 5000);
+}
+function loserF(){
+    loser.style.display = 'flex';
+    gameContainer.style.display = 'none';
+    setTimeout(() => {
+        youLose.style.opacity = '1';
+    }, 1000);
+    setTimeout(() => {
+        tryAgain.style.opacity = '1';
+    }, 3000);
+    setTimeout(() => {
+    loser.style.display = 'none';
+    enablePointers()
+    gameContainer.style.display = 'grid';
+    youLose.style.opacity = '0';
+    tryAgain.style.opacity = '0';
+    }, 5000);
+}
+function disablePointers(){
+    gameContainer.style.pointerEvents = 'none';
+    allBtn.style.cursor = 'none';
+}
+function enablePointers(){
+    gameContainer.style.pointerEvents = 'auto';
+    allBtn.style.cursor = 'pointer';
 }
 
 
