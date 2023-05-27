@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 :root{
-  --primary-font-color: #B3D3FC;
   --secondary-font: #f1f4f8;
 }
 body {
@@ -11,11 +9,7 @@ body {
     background-color: grey;
     
   }
-  /* border maker */
-  /* #scores, #choose-weapon-text, #choices{
-  border:3px solid white;
-} */
-  /* border maker */
+
 #full-container {
     transform: scale(0.6);
     box-sizing: border-box;
@@ -201,9 +195,6 @@ transition: margin 1s ease;
 margin-right: 4vw;
 transition: margin 1s ease;
 }
-
-
-
 
 
 
