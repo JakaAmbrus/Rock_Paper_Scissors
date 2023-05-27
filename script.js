@@ -10,8 +10,10 @@ const titleP = document.querySelector('.title-p');
 const titleS = document.querySelector('.title-s');
 const choices = document.querySelector('#choices-container');
 const scoresContainer = document.querySelector('#scores');
+const fullscreenButton = document.querySelector('#fullscreen-button');
 
-console.log('3fddfhg')
+
+
 //transition to the game from start game screen
 startBtn.addEventListener('click', hideOverlayAndGameStart);
 function hideOverlayAndGameStart()
@@ -141,7 +143,7 @@ function win(){
         console.log('win')
                
             setTimeout(() => {
-                if(playerScore == 5){
+                if(playerScore == 3){
                     disablePointers();
                     gameReset();
                         winnerF();
@@ -159,7 +161,7 @@ function lose(){
         computerScoreSpan.innerHTML = computerScore;
         console.log('lose')
         setTimeout(() => {
-            if(computerScore == 5){
+            if(computerScore == 3){
                 disablePointers();
                 gameReset();
                     loserF();
@@ -275,6 +277,35 @@ function enablePointers(){
 
 
 playerSelection();
+
+//fullscreen button
+
+fullscreenButton.addEventListener('click', function() {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
+      // Enter fullscreen
+      if (fullContainer.requestFullscreen) {
+        fullContainer.requestFullscreen();
+      } else if (fullContainer.mozRequestFullScreen) {
+        fullContainer.mozRequestFullScreen();
+      } else if (fullContainer.webkitRequestFullscreen) {
+        fullContainer.webkitRequestFullscreen();
+      } else if (fullContainer.msRequestFullscreen) {
+        fullContainer.msRequestFullscreen();
+      }
+    } else {
+      // Exit fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+  });
+
 /*
 I WAS TRYING TO MAKE THE ANIMATION OF THE TITLE SCREEN WAY TOO COMPLICATED
 function displayWords(i) {
