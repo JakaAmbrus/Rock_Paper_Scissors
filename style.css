@@ -22,6 +22,9 @@ body {
     background-image: url('img/jeremy-perkins-uhjiu8FjnsQ-unsplash.jpg');
     
 }
+#audio-container{
+  display: none;
+}
 #fullscreen-button{
   position: absolute;
   bottom: 2vh;
@@ -31,6 +34,16 @@ body {
 .fullscreen-png{
   height: 5vh;
   width: 5vh;
+}
+.mute-png{
+  height: 6vh;
+  width: 6vh;
+}
+#mute-button{
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  z-index: 999;
 }
 /* the start game screen start */
  #overlay {
@@ -53,9 +66,7 @@ body {
 #title-overlay h1{
   font-size: 10vw; 
   line-height: 30vh;
-  color: var(--secondary-font);
-  /* text-shadow: 0 0 0.5vh white; */
-  
+  /* color: var(--secondary-font); */
 }
 
 .start-btn-container{
@@ -70,11 +81,9 @@ body {
   border-radius: 30px;
   background: none;
   border: 5px solid var(--secondary-font);
-  outline: white;
   font-size: 4vw;
   color: var(--secondary-font);
   cursor: pointer;
-  /* text-shadow: 0 0 0.5vh white */
 }
 #technologies-used{
   display: flex;
@@ -107,7 +116,6 @@ margin-bottom: 3vh;
   align-items: center;
   font-size: 7vw;
   gap: 2vw;
-  color: var(--secondary-font);
 }
 .title-r, .title-p, .title-s{
   opacity: 0;
@@ -247,8 +255,9 @@ transition: margin 1s ease;
 #loser-screen{
   font-size: 16vh;
 }
-
-
+#title-overlay h1{
+  font-size: 9vw; 
+}
 @media (min-height: 2500px) {
   #full-container {
     transform: scale(.98, 0.7);
@@ -270,4 +279,7 @@ transition: margin 1s ease;
 }
 #loser-screen{
   font-size: 16vh;
+}
+#title-overlay h1{
+  font-size: 9vw; 
 }

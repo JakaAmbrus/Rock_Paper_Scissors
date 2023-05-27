@@ -11,7 +11,9 @@ const titleS = document.querySelector('.title-s');
 const choices = document.querySelector('#choices-container');
 const scoresContainer = document.querySelector('#scores');
 const fullscreenButton = document.querySelector('#fullscreen-button');
-
+const whoosh = document.getElementById('whoosh');
+const winAudio = document.getElementById('win-audio');
+const loseAudio = document.getElementById('lose-audio');
 
 
 //transition to the game from start game screen
@@ -116,6 +118,7 @@ let imageRight = document.getElementById("right-png");
 function animation(left, right){
 
 setTimeout(() => {
+whoosh.play();
 imageLeft.src = left;
 imageRight.src = right;
 animationsContainer.style.display = 'grid';
@@ -139,9 +142,7 @@ function win(){
     setTimeout(() => {
         playerScore++;
         playerScoreSpan.innerHTML = playerScore;
-        computerScoreSpan.innerHTML = computerScore;
-        console.log('win')
-               
+        computerScoreSpan.innerHTML = computerScore; 
             setTimeout(() => {
                 if(playerScore == 3){
                     disablePointers();
@@ -159,7 +160,6 @@ function lose(){
         computerScore++;
         playerScoreSpan.innerHTML = playerScore;
         computerScoreSpan.innerHTML = computerScore;
-        console.log('lose')
         setTimeout(() => {
             if(computerScore == 3){
                 disablePointers();
@@ -170,9 +170,6 @@ function lose(){
         
     }, 2000)
    
-}
-function tie(){
-    console.log('tie')
 }
 function gameReset(){
     playerScore = 0;
@@ -236,6 +233,7 @@ function winnerF(){
 winner.style.display = 'flex';
 gameContainer.style.display = 'none';
 setTimeout(() => {
+    winAudio.play();
     youWin.style.opacity = '1';
 }, 1000);
 setTimeout(() => {
@@ -253,6 +251,7 @@ function loserF(){
     loser.style.display = 'flex';
     gameContainer.style.display = 'none';
     setTimeout(() => {
+        loseAudio.play();
         youLose.style.opacity = '1';
     }, 1000);
     setTimeout(() => {
@@ -264,7 +263,7 @@ function loserF(){
     gameContainer.style.display = 'grid';
     youLose.style.opacity = '0';
     tryAgain.style.opacity = '0';
-    }, 5000);
+    }, 6000);
 }
 function disablePointers(){
     gameContainer.style.pointerEvents = 'none';
@@ -274,9 +273,6 @@ function enablePointers(){
     gameContainer.style.pointerEvents = 'auto';
     allBtn.style.cursor = 'pointer';
 }
-
-
-playerSelection();
 
 //fullscreen button
 
@@ -306,25 +302,22 @@ fullscreenButton.addEventListener('click', function() {
     }
   });
 
-/*
-I WAS TRYING TO MAKE THE ANIMATION OF THE TITLE SCREEN WAY TOO COMPLICATED
-function displayWords(i) {
-    if (i < titleArr.length) {
-      const wordElement = document.createElement("span");
-      wordElement.textContent = titleArr[i];
+// audio buttons
+let gameAudio = document.querySelectorAll('.game-audio');
+let muteButton = document.querySelector('.mute-png')
+let isMuted = false;
 
-      // Add a space after each word except for the last one
-      if (i < titleArr.length - 1) {
-        const spaceElement = document.createTextNode(" ");
-        title.appendChild(spaceElement);
-      }
+muteButton.addEventListener('click', function() {
+  isMuted = !isMuted;
 
-      title.appendChild(wordElement);
-      void wordElement.offsetWidth;
-      wordElement.style.opacity = "1";
-      setTimeout(() => {
-        displayWords(i + 1);
-      }, 1000);
-    }
-  }
-*/
+  gameAudio.forEach(function(audio) {
+    audio.muted = isMuted; 
+  });
+
+  muteButton.setAttribute('src', isMuted ? 'img/muted.png' : 'img/unmuted.png'); 
+});
+
+
+
+
+playerSelection();
