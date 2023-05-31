@@ -303,23 +303,26 @@ fullscreenButton.addEventListener('click', function() {
   
   function applySidewaysFullscreen() {
     if (isMobile()) {
-      fullContainer.classList.add("sideways-fullscreen");
+      fullContainer.style.transform = "rotate(90deg)";
     }
   }
   
   function removeSidewaysFullscreen() {
-    fullContainer.classList.remove("sideways-fullscreen");
+    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
+      fullContainer.style.transform = "scale(0.98, 0.7)";
+    } else {
+      fullContainer.style.transform = "";
+    }
   }
   
   document.addEventListener("fullscreenchange", applySidewaysFullscreen);
   document.addEventListener("webkitfullscreenchange", applySidewaysFullscreen);
   document.addEventListener("fullscreenchange", removeSidewaysFullscreen);
   document.addEventListener("webkitfullscreenchange", removeSidewaysFullscreen);
-
+  
   function isMobile() {
     return /Mobi/.test(navigator.userAgent);
   }
-  
 // audio buttons
 let gameAudio = document.querySelectorAll('.game-audio');
 let muteButton = document.querySelector('.mute-png')
