@@ -1,5 +1,5 @@
 //for the game to start
-const fullContainer = document.querySelector('#full-container');
+let fullContainer = document.querySelector('#full-container');
 const startBtn = document.querySelector('.start-btn');
 const overlay = document.querySelector('#overlay');
 const gameContainer = document.querySelector('#game-container');
@@ -301,33 +301,25 @@ fullscreenButton.addEventListener('click', function() {
   });
   
   
-  document.addEventListener("fullscreenchange", function() {
-    if (document.fullscreenElement && isMobile()) {
-      applySidewaysFullscreen();
-    } else {
-      removeSidewaysFullscreen();
-    }
-  });
-  
-  document.addEventListener("webkitfullscreenchange", function() {
-    if (document.webkitFullscreenElement && isMobile()) {
-      applySidewaysFullscreen();
-    } else {
-      removeSidewaysFullscreen();
-    }
-  });
-
-  function isMobile() {
-    return /Mobi/.test(navigator.userAgent);
-  }
-  
   function applySidewaysFullscreen() {
-    fullContainer.classList.add("sideways-fullscreen");
+    if (isMobile()) {
+      fullContainer.classList.add("sideways-fullscreen");
+    }
   }
   
   function removeSidewaysFullscreen() {
     fullContainer.classList.remove("sideways-fullscreen");
   }
+  
+  document.addEventListener("fullscreenchange", applySidewaysFullscreen);
+  document.addEventListener("webkitfullscreenchange", applySidewaysFullscreen);
+  document.addEventListener("fullscreenchange", removeSidewaysFullscreen);
+  document.addEventListener("webkitfullscreenchange", removeSidewaysFullscreen);
+
+  function isMobile() {
+    return /Mobi/.test(navigator.userAgent);
+  }
+  
 // audio buttons
 let gameAudio = document.querySelectorAll('.game-audio');
 let muteButton = document.querySelector('.mute-png')
