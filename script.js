@@ -278,7 +278,6 @@ function enablePointers(){
 
 fullscreenButton.addEventListener('click', function() {
     if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
-      // Enter fullscreen
       if (fullContainer.requestFullscreen) {
         fullContainer.requestFullscreen();
       } else if (fullContainer.mozRequestFullScreen) {
@@ -289,7 +288,6 @@ fullscreenButton.addEventListener('click', function() {
         fullContainer.msRequestFullscreen();
       }
     } else {
-      // Exit fullscreen
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.mozCancelFullScreen) {
@@ -301,6 +299,35 @@ fullscreenButton.addEventListener('click', function() {
       }
     }
   });
+  
+  
+  document.addEventListener("fullscreenchange", function() {
+    if (document.fullscreenElement && isMobile()) {
+      applySidewaysFullscreen();
+    } else {
+      removeSidewaysFullscreen();
+    }
+  });
+  
+  document.addEventListener("webkitfullscreenchange", function() {
+    if (document.webkitFullscreenElement && isMobile()) {
+      applySidewaysFullscreen();
+    } else {
+      removeSidewaysFullscreen();
+    }
+  });
+
+  function isMobile() {
+    return /Mobi/.test(navigator.userAgent);
+  }
+  
+  function applySidewaysFullscreen() {
+    fullContainer.style.transform = "rotate(90deg)";
+  }
+  
+  function removeSidewaysFullscreen() {
+    fullContainer.style.transform = "";
+  }
 
 // audio buttons
 let gameAudio = document.querySelectorAll('.game-audio');
