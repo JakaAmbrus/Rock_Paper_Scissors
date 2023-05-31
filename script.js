@@ -1,5 +1,5 @@
 //for the game to start
-let fullContainer = document.querySelector('#full-container');
+const fullContainer = document.querySelector('#full-container');
 const startBtn = document.querySelector('.start-btn');
 const overlay = document.querySelector('#overlay');
 const gameContainer = document.querySelector('#game-container');
@@ -278,6 +278,7 @@ function enablePointers(){
 
 fullscreenButton.addEventListener('click', function() {
     if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
+      // Enter fullscreen
       if (fullContainer.requestFullscreen) {
         fullContainer.requestFullscreen();
       } else if (fullContainer.mozRequestFullScreen) {
@@ -288,6 +289,7 @@ fullscreenButton.addEventListener('click', function() {
         fullContainer.msRequestFullscreen();
       }
     } else {
+      // Exit fullscreen
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.mozCancelFullScreen) {
@@ -299,30 +301,7 @@ fullscreenButton.addEventListener('click', function() {
       }
     }
   });
-  
-  
-  function applySidewaysFullscreen() {
-    if (isMobile()) {
-      fullContainer.style.transform = "rotate(90deg)";
-    }
-  }
-  
-  function removeSidewaysFullscreen() {
-    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
-      fullContainer.style.transform = "scale(0.98, 0.7)";
-    } else {
-      fullContainer.style.transform = "";
-    }
-  }
-  
-  document.addEventListener("fullscreenchange", applySidewaysFullscreen);
-  document.addEventListener("webkitfullscreenchange", applySidewaysFullscreen);
-  document.addEventListener("fullscreenchange", removeSidewaysFullscreen);
-  document.addEventListener("webkitfullscreenchange", removeSidewaysFullscreen);
-  
-  function isMobile() {
-    return /Mobi/.test(navigator.userAgent);
-  }
+
 // audio buttons
 let gameAudio = document.querySelectorAll('.game-audio');
 let muteButton = document.querySelector('.mute-png')
