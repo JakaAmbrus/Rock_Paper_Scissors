@@ -322,13 +322,12 @@ fullscreenButton.addEventListener('click', function() {
   }
   
   function applySidewaysFullscreen() {
-    fullContainer.style.transform = "rotate(90deg)";
+    fullContainer.classList.add("sideways-fullscreen");
   }
   
   function removeSidewaysFullscreen() {
-    fullContainer.style.transform = "";
+    fullContainer.classList.remove("sideways-fullscreen");
   }
-
 // audio buttons
 let gameAudio = document.querySelectorAll('.game-audio');
 let muteButton = document.querySelector('.mute-png')

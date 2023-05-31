@@ -276,10 +276,18 @@ transition: margin 1s ease;
   #title{
     font-size: 10vw;
   }
+  #loser-screen{
+    font-size: 16vh;
+  }
+  #title-overlay h1{
+    font-size: 9vw; 
+  }
 }
-#loser-screen{
-  font-size: 16vh;
-}
-#title-overlay h1{
-  font-size: 9vw; 
+.sideways-fullscreen {
+  transform: rotate(90deg);
+  transform-origin: top left;
+  width: 100vh;
+  height: 100vw;
+  top: 0;
+  left: 0;
 }
