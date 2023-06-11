@@ -14,6 +14,7 @@ const fullscreenButton = document.querySelector('#fullscreen-button');
 const whoosh = document.getElementById('whoosh');
 const winAudio = document.getElementById('win-audio');
 const loseAudio = document.getElementById('lose-audio');
+const rotate = document.getElementById('rotate');
 
 
 //transition to the game from start game screen
@@ -279,6 +280,16 @@ function enablePointers(){
 fullscreenButton.addEventListener('click', function() {
     if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
       // Enter fullscreen
+      if(window.matchMedia('(max-width: 1100px)').matches || window.matchMedia('(min-height: 2500px)').matches){
+        rotate.style.display = 'flex';
+        setTimeout(() => {
+          rotate.style.opacity = '1';
+        }, 100)
+        setTimeout(() => {
+          rotate.style.display = 'none';
+          rotate.style.opacity = '0';
+        }, 2000)
+      }
       if (fullContainer.requestFullscreen) {
         fullContainer.requestFullscreen();
       } else if (fullContainer.mozRequestFullScreen) {
